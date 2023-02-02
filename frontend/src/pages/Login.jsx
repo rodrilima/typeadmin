@@ -9,7 +9,7 @@ export function Login() {
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   const [lembrar, setLembrar] = useState(false)
-  const [showSnackbarError, setShowSnackbarError] = useState(true)
+  const [showSnackbarError, setShowSnackbarError] = useState(false)
 
   const navigate = useNavigate()
 
