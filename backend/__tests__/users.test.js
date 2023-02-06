@@ -1,12 +1,12 @@
 import { beforeAll, expect, it } from "vitest";
 import request from "supertest";
-import { app, key } from "./app";
+import { app } from "./app";
 import jwt from 'jsonwebtoken'
 
 let authorization;
 
 beforeAll(async () => {
-  const token = jwt.sign({}, key)
+  const token = jwt.sign({}, process.env.JWT_TOKEN)
   authorization = `Bearer ${token}`
 })
 
