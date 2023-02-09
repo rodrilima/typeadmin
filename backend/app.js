@@ -2,7 +2,7 @@ import express from 'express'
 import jwt from 'jsonwebtoken'
 import cors from 'cors'
 
-const key = "shgpisaigsgi654646%*%*&¨%"
+export const key = "shgpisaigsgi654646%*%*&¨%"
 
 export const app = express()
 app.use(express.json())
