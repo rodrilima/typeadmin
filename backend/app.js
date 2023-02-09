@@ -60,7 +60,7 @@ app.post('/auth', (req, res) => {
   }
 
   return res.status(401).json({
-    error: 'Erro nos dados de autenticação'
+    error: 'Authentication data error'
   })
 })
 
