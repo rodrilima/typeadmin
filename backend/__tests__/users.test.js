@@ -1,11 +1,11 @@
 import { it, expect, beforeAll } from 'vitest'
 import request from 'supertest'
-import { app, key } from '../app.js'
+import { app } from '../app.js'
 import jwt from 'jsonwebtoken'
 
 let token;
 beforeAll(() => {
-  token = jwt.sign({}, key)
+  token = jwt.sign({}, process.env.JWT_TOKEN)
 })
 
 it('should be able to list users', async () => {

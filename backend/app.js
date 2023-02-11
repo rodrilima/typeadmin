@@ -1,8 +1,7 @@
 import express from 'express'
 import jwt from 'jsonwebtoken'
 import cors from 'cors'
-
-export const key = process.env.JWT_TOKEN
+import { isAuthenticated } from './middlewares/auth.middleware'
 
 export const app = express()
 app.use(express.json())
@@ -25,16 +24,6 @@ function getUser(email) {
   return users.find(user => user.email === email)
 }
 
-function isAuthenticated(req, res, next) {
-  try {
-    const token = req.headers.authorization.split(' ')[1]
-    jwt.verify(token, key)
-    next()
-  } catch(e) {
-    return res.status(401).json({ error: 'Not authorized' })
-  }
-}
-
 app.post('/auth', (req, res) => {
   const { email, senha } = req.body;
 
@@ -53,7 +42,7 @@ app.post('/auth', (req, res) => {
           email,
           role: 'admin'
         }, 
-        key,
+        process.env.JWT_TOKEN,
         { expiresIn: "24h" }
       )
     })
