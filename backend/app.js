@@ -1,13 +1,11 @@
 import express from 'express'
 import cors from 'cors'
-import { isAuthenticated } from './middlewares/auth.middleware'
-import { authenticate } from './controllers/auth.controller'
-import { getUsers } from './controllers/users.controllers'
+import { authRouter } from './routes/auth.route'
+import { usersRouter } from './routes/users.route'
 
 export const app = express()
 app.use(express.json())
 app.use(cors())
 
-app.post('/auth', authenticate)
-
-app.get('/users', isAuthenticated, getUsers)
+app.use('/auth', authRouter)
+app.use('/users', usersRouter)
