@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import { getUser } from '../repositories/users.repository';
+import { getUser } from '../repositories/users.repository.js';
 
 export function authenticate(req, res) {
   const { email, senha } = req.body;
