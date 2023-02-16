@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken'
+import bcrypt from 'bcrypt'
 import { getUser } from '../repositories/users.repository.js';
 
 export async function authenticate(req, res) {
@@ -6,7 +7,7 @@ export async function authenticate(req, res) {
 
   const user = await getUser(email)
 
-  if (senha === user?.senha) {
+  if (bcrypt.compareSync(senha, user?.senha)) {
     if (user.role !== 'admin') {
       return res.status(403).send({
         error: 'User not authorized'
