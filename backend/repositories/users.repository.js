@@ -1,16 +1,9 @@
-export function getUser(email) {
-  const users = [
-    {
-      email: 'contato@type.dev.br',
-      senha: '123456',
-      role: 'admin'
-    },
-    {
-      email: 'rodrigo@type.dev.br',
-      senha: '123456',
-      role: 'customer'
-    }
-  ]
+import { UserModel } from "../models/user.model.js"
 
-  return users.find(user => user.email === email)
+export async function getUser(email) {
+  const user = await UserModel.findOne({
+    email
+  })
+
+  return user;
 }
