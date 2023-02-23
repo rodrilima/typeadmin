@@ -1,0 +1,12 @@
+.checkboxGroup {
+  margin-bottom: 24px;
+  display: flex;
+}
+
+.checkboxGroup input {
+  width: 20px;
+  height: 20px;
+  border: solid 1px var(--white-100);
+  margin-right: 8px;
+  cursor: pointer;
+}

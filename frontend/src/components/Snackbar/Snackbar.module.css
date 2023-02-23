@@ -1,0 +1,31 @@
+.snackbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 8px;
+  padding: 16px;
+  width: 470px;
+  margin-top: 32px;
+}
+
+.error {
+  border: 1px solid var(--error);
+}
+
+.snackbarContent {
+  display: flex;
+  align-items: center;
+}
+
+.snackbarContent p {
+  max-width: 266px;
+  margin-left: 16px;
+}
+
+.snackbarClose {
+  cursor: pointer;
+}
+
+.snackbarHide {
+  display: none;
+}

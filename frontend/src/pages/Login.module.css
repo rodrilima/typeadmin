@@ -23,42 +23,6 @@
   margin-bottom: 16px;
 }
 
-.container .main .content form .inputGroup input {
-  width: 100%;
-  height: 44px;
-
-  border: solid 1px var(--white-100);
-  border-radius: 4px;
-  font-size: var(--fs-paragraph-2);
-  padding-left: 24px;
-  padding-right: 16px;
-}
-
-.container .main .content form .checkboxGroup {
-  margin-bottom: 24px;
-  display: flex;
-}
-
-.container .main .content form .checkboxGroup input {
-  width: 20px;
-  height: 20px;
-  border: solid 1px var(--white-100);
-  margin-right: 8px;
-  cursor: pointer;
-}
-
-.container .main .content form button {
-  width: 100%;
-  height: 44px;
-
-  background-color: var(--blue-300);
-  border: none;
-  border-radius: 4px;
-  color: var(--white-500);
-  font-size: var(--fs-paragraph-2);
-  cursor: pointer;
-}
-
 .container .background {
   flex: 1;
   background-color: var(--blue-300);
@@ -69,33 +33,4 @@
   background-size: cover;
   width: 100%;
   height: 100vh;
-}
-
-.snackbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border: 1px solid var(--error);
-  border-radius: 8px;
-  padding: 16px;
-  width: 470px;
-  margin-top: 32px;
-}
-
-.snackbarContent {
-  display: flex;
-  align-items: center;
-}
-
-.snackbarContent p {
-  max-width: 266px;
-  margin-left: 16px;
-}
-
-.snackbarClose {
-  cursor: pointer;
-}
-
-.snackbarHide {
-  display: none;
 }

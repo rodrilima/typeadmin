@@ -2,8 +2,10 @@ import { useState } from 'react'
 import Cookies from 'js-cookie'
 import { useNavigate } from "react-router-dom";
 import style from './Login.module.css'
-import blockIcon from '../assets/block-icon.png'
-import closeIcon from '../assets/close-icon.png'
+import { Input } from '../components/Input';
+import { Checkbox } from '../components/Checkbox';
+import { Button } from '../components/Button';
+import { Snackbar } from '../components/Snackbar';
 
 export function Login() {
   const [email, setEmail] = useState('')
@@ -17,7 +19,7 @@ export function Login() {
     e.preventDefault()
     
     const response = await fetch(
-      'http://localhost:3001/auth',
+      `${import.meta.env.VITE_API_URL}/auth`,
       {
         method: 'POST',
         body: JSON.stringify({
@@ -50,45 +52,41 @@ export function Login() {
       <div className={style.content}>
         <h2>Bem vindo de volta!</h2>
         <p className='fs-paragraph-2'>Insira suas informações abaixo para acessar seu painel</p>
-        
-        <div className={`${style.snackbar} ${showSnackbarError ? "" : style.snackbarHide}`}>
-          <div className={style.snackbarContent}>
-            <img src={blockIcon} />
-            <p className='fs-paragraph-1'>Usuário ou senha incorretos. Por favor, tente novamente.</p>
-          </div>
-          <div className={style.snackbarClose} onClick={() => {setShowSnackbarError(false)}}>
-            <img src={closeIcon} />
-          </div>
-        </div>
+
+        <Snackbar
+          message="Usuário ou senha incorretos. Por favor, tente novamente."
+          showSnackbarError={showSnackbarError}
+          setShowSnackbarError={setShowSnackbarError}
+        />
 
         <form onSubmit={authenticate}>
-          <div className={style.inputGroup}>
-            <label className='fs-paragraph-1'>Email</label>
-            <input 
-              type="email" 
-              value={email} 
-              onChange={(e) => setEmail(e.target.value)} 
-              required
-            />
-          </div>
-          <div className={style.inputGroup}>
-            <label className='fs-paragraph-1'>Senha</label>
-            <input 
-              type="password" 
-              value={senha} 
-              onChange={(e) => setSenha(e.target.value)} 
-              required
-            />
-          </div>
-          <div className={style.checkboxGroup}>
-            <input 
-              type="checkbox" checked={lembrar} 
-              onChange={(e) => setLembrar(e.target.checked)} 
-            /> 
-            <label>Lembrar de mim</label>
-          </div>
+          <Input
+            id='email'
+            type="email" 
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)} 
+            label='Email'
+            className={style.inputGroup}
+            required
+            autoComplete="username"
+          />
+          <Input 
+            id='password'
+            type="password" 
+            value={senha} 
+            onChange={(e) => setSenha(e.target.value)} 
+            label='Senha'
+            className={style.inputGroup}
+            autoComplete="current-password"
+            required
+          />
+          <Checkbox 
+            type="checkbox" checked={lembrar} 
+            onChange={(e) => setLembrar(e.target.checked)} 
+            label="Lembrar de mim"
+          /> 
           <div>
-            <button type='submit'>Entrar</button>
+            <Button>Entrar</Button>
           </div>
         </form>
       </div>
